@@ -1,7 +1,8 @@
 import BaseService from "../BaseService";
 import Storage from '../../lib/Storage';
 import { STORAGE_TAGS } from "../../constants/Storage";
-import {backendDev} from "../../config";
+import { backendDev } from "../../config";
+import Papa from 'papaparse';
 
 
 
@@ -35,10 +36,29 @@ class BackendService extends BaseService{
 
     // endpoints 
 
-    getAllPosts = () => ({
-        url : '/todos', 
+    getStocks = ({interval  , from = '1633381200' , to = '1664917199' }) => ({
+        url : `/SPUS?period1=${from}&period2=${to}&interval=${interval}&events=history`, 
         method : 'GET' , 
     });
+
+    parse = (file) => {
+        return new Promise((complete, error) => {
+            Papa.parse(file, { complete, error });
+        });
+    };
+    formattingData = (data) => {
+        const rows = data.slice(1); 
+        const cols = data[0]; 
+        return  rows.map(row => {
+            const obj = {};
+            cols.forEach((col, index) => {
+                obj[col ==='Adj Close'? col.replace(' ', '_') : col] = row[index]; 
+            }); 
+            return obj; 
+        });
+
+        
+    };
 }
 
 

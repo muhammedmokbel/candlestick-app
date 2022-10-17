@@ -10,6 +10,8 @@ import store from './redux/store';
 import Storage from './lib/Storage';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'antd/dist/antd.css';
+
 
 
 
