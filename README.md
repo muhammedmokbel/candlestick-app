@@ -71,4 +71,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ### `Why apexcharts?`
 
-one of the best charts library that provide different charts types and you can provide to chart the data in easy way
+one of the best charts library that provide different charts types and you can provide to chart the data in easy way [apexcharts docs](https://apexcharts.com/docs/installation)
