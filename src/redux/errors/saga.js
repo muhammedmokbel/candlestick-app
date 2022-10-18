@@ -7,18 +7,18 @@ import history from "../../routes/history";
 // worker
 
 
-function* badRequestWorker({ payload: data }) {
+function* badRequestWorker({payload}) {
   try {
-    yield put(openAlert(data.data.message, "error"));
+    yield put(openAlert({ message : payload, severity : "error"}));
   } catch (error) {
     yield put(serverError((500).toString(), error));
   }
 }
 
-function* unauthorizedWorker({ payload: data }) {
+function* unauthorizedWorker({payload}) {
   try {
-    yield call(sessionStorage.removeAllItems);
-    yield put(openAlert(data.data.message, "error"));
+
+    yield put(openAlert({ message : payload, severity : "error"}));
   } catch (error) {
     yield put(serverError((500).toString(), error));
   } finally {
@@ -27,10 +27,10 @@ function* unauthorizedWorker({ payload: data }) {
   }
 }
 
-function* forbiddenWorker({ payload: data }) {
+function* forbiddenWorker({payload}) {
   try {
-    yield call(sessionStorage.removeAllItems);
-    yield put(openAlert(data.data.message, "error"));
+ 
+    yield put(openAlert({ message : payload, severity : "error"}));
   } catch (error) {
     yield put(serverError((500).toString(), error));
   } finally {
@@ -38,18 +38,19 @@ function* forbiddenWorker({ payload: data }) {
   }
 }
 
-function* notfoundWorker({ payload: data }) {
+function* notfoundWorker({payload}) {
   try {
-    yield put(openAlert(data.data.message, "error"));
+
+    yield put(openAlert({ message : payload, severity : "error"}));
   } catch (error) {
     yield put(serverError((500).toString(), error));
   }
 }
 
 
-function* networkError({ payload }) {
+function* networkError({payload}) {
   try {
-    yield put(openAlert(payload.message, "error"));
+    yield put(openAlert({ message : payload, severity : "error"}));
   } catch (error) {
     yield put(serverError((500).toString(), error));
   } finally {
@@ -57,9 +58,9 @@ function* networkError({ payload }) {
   }
 }
 
-function* serverErrorWorker({ payload: data }) {
+function* serverErrorWorker({payload}) {
   try {
-    yield put(openAlert(data.data.message, "error"));
+    yield put(openAlert({ message : payload, severity : "error"}));
   } catch (error) {
     console.log(error);
   } finally {
@@ -69,14 +70,15 @@ function* serverErrorWorker({ payload: data }) {
 
 // watcher
 export default function* errorSagaWatcher() {
-  yield takeEvery(actionTypes.BAD_REQUEST_ERROR.toString(), badRequestWorker);
+  
+  yield takeEvery('errors/' + actionTypes.BAD_REQUEST_ERROR.toString(), badRequestWorker);
   yield takeEvery(
-    actionTypes.UNAUTHORIZED_ERROR.toString(),
+    'errors/'+actionTypes.UNAUTHORIZED_ERROR.toString(),
     unauthorizedWorker
   );
-  yield takeEvery(actionTypes.FORBIDDEN_ERROR.toString(), forbiddenWorker);
-  yield takeEvery(actionTypes.NOTFOUND_ERROR.toString(), notfoundWorker);
+  yield takeEvery('errors/'+actionTypes.FORBIDDEN_ERROR.toString(), forbiddenWorker);
+  yield takeEvery('errors/'+actionTypes.NOTFOUND_ERROR.toString(), notfoundWorker);
 
-  yield takeEvery(actionTypes.SERVER_ERROR.toString(), serverErrorWorker);
-  yield takeEvery(actionTypes.NETWORK_ERROR.toString(), networkError);
+  yield takeEvery('errors/'+actionTypes.SERVER_ERROR.toString(), serverErrorWorker);
+  yield takeEvery('errors/'+actionTypes.NETWORK_ERROR.toString(), networkError);
 }

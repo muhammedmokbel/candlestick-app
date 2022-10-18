@@ -15,10 +15,9 @@ const alertSlice = createSlice({
         openAlert  : (state, action) => {
             
             state.isOpen = true;  
-            state.anchor =action.payload.anchor || state.anchor;
-            state.type = action.payload.type || state.type;
             state.message = action.payload.message;
-            state.hideDuration = action.payload.duration;
+            state.type = action.payload.severity;
+         
         },
         closeAlert : state => {
             state.isOpen = false ;

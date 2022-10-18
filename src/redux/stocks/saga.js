@@ -1,8 +1,10 @@
 import { call, put, takeEvery , select} from "redux-saga/effects";
-import {getStocksSuccess, updateInterval, updateIntervalSuccess ,stocksSlice, updateDateRangeSuccess} from './slice'; 
+import {getStocksSuccess, updateInterval, updateIntervalSuccess ,stocksSlice, updateDateRangeSuccess, getStocksFail, updateIntervalFail, updateDateRangeFail} from './slice'; 
 import BackendService from "../../services/servicesInstances/BackendService";
 
-import Papa from 'papaparse';
+import { apiError } from "./actions";
+
+
 
 
 // worker
@@ -21,13 +23,15 @@ function* getStocksSaga() {
       
       
   } catch (error) {
-      console.log(error); 
+    yield put(apiError('errors/' + error?.response?.status.toString(), error.message));
+    yield put(getStocksFail([])); 
   }
 }
 
 function* updateIntervalSaga({payload}) {
   try {
-const filter = yield select(state => state.stocks.filter);
+    const filter = yield select(state => state.stocks.filter);
+   
     const respond = yield call(BackendService.request, BackendService.getStocks({...filter})); 
 
     const { data } = yield call(BackendService.parse, respond.data);
@@ -39,7 +43,9 @@ const filter = yield select(state => state.stocks.filter);
       
       
   } catch (error) {
-      console.log(error); 
+  
+    yield put(apiError('errors/' + error?.response?.status.toString(), error.message));
+    yield put(updateIntervalFail([])); 
   }
 }
 
@@ -57,7 +63,9 @@ function* updateDateRangeSaga({payload}) {
       
       
   } catch (error) {
-      console.log(error); 
+   
+    yield put(apiError('errors/' + error?.response?.status.toString(), error.message));
+    yield put(updateDateRangeFail([])); 
   }
 }
 

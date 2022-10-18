@@ -16,7 +16,8 @@ const errorSlice = createSlice({
          [actionTypes.FORBIDDEN_ERROR]: (state, action) => {
             state.error = action.payload; 
         },
-         [actionTypes.NOTFOUND_ERROR]: (state, action) => { 
+        [actionTypes.NOTFOUND_ERROR]: (state, action) => { 
+         
             state.error = action.payload; 
         }, 
          [actionTypes.SERVER_ERROR]: (state, action) => {
@@ -30,6 +31,6 @@ const errorSlice = createSlice({
       
     }
 }); 
-
-
-export default errorSlice; 
+const actions = errorSlice.actions; 
+export { actions }; 
+export default errorSlice.reducer; 

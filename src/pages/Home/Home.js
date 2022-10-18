@@ -15,7 +15,7 @@ import chartsConfig from '../../lib/chartsConfig.json';
 
 
 
-const Home = ({getStocks, stocks, volumes, updateInterval, updateDateRange, isloading}) => {
+const Home = ({getStocks, stocks, updateInterval, updateDateRange, isloading}) => {
     const [candleStickOptions, setCandleStickOptions] = useState({...chartsConfig.candlestick}); 
     
     useEffect(() => {
