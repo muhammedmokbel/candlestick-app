@@ -1,20 +1,19 @@
-# Important !! 
+# Important !!
 
-## API issues 
-there are *cors policy issue* related to API attached to the task so the client side can't access the data from the browser unless closed the policy so we have to disable the policy on the browser or enable cors from the server \ 
-solutions : \
-1- disable the policy on the browser \ 
-  Open the start menu \
-  Type windows+R or open "Run" \
-  Execute the following command: *chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security* \
-2- enable the cors from server 
+## API issues
 
+there are _cors policy issue_ related to API attached to the task so the client side can't access the data from the browser unless closed the policy so we have to disable the policy on the browser or enable cors from the server <br />
+
+solutions : <br />
+1- disable the policy on the browser <br />
+Open the start menu <br />
+Type windows+R or open "Run" <br />
+Execute the following command: _chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security_ <br />
+2- enable the cors from server <br />
 
 ### `Why apexcharts?`
 
 one of the best charts library that provide different charts types and you can provide to chart the data in easy way [apexcharts docs](https://apexcharts.com/docs/installation)
-
-
 
 # Getting Started with Create React App
 
@@ -86,4 +85,3 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
