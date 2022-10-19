@@ -13,7 +13,7 @@ Execute the following command: _chrome.exe --user-data-dir="C://Chrome dev sessi
 
 ### `Why apexcharts?`
 
-one of the best charts library that provide different charts types and you can provide to chart the data in easy way [apexcharts docs](https://apexcharts.com/docs/installation)
+one of the best charts library that provide different charts types and you can provide data to chart in easy way [apexcharts docs](https://apexcharts.com/docs/installation)
 
 # Getting Started with Create React App
 
