@@ -9,7 +9,7 @@ solutions : <br />
 Open the start menu <br />
 Type windows+R or open "Run" <br />
 Execute the following command: _chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security_ <br />
-2- enable the cors from server <br />
+2- enable the cors on server <br />
 
 ### `Why apexcharts?`
 
