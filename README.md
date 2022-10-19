@@ -2,7 +2,7 @@
 
 ## API issues
 
-there are _cors policy issue_ related to API attached to the task so the client side can't access the data from the browser unless closed the policy so we have to disable the policy on the browser or enable cors from the server <br />
+there is _cors policy issue_ related to API attached to the task so the client side can't access the data from the browser unless closed the policy so we have to disable the policy on the browser or enable cors on the server <br />
 
 solutions : <br />
 1- disable the policy on the browser <br />
