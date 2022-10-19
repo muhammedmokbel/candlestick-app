@@ -1,12 +1,12 @@
 # Important !! 
 
 ## API issues 
-there are *cors policy issue* related to API attached to the task so the client side can't access the data from the browser unless closed the policy so we have to disable the policy on the browser or enable cors from the server\ 
-solutions :\
-1- disable the policy on the browser\ 
-  Open the start menu\
-  Type windows+R or open "Run"\
-  Execute the following command: *chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security*\
+there are *cors policy issue* related to API attached to the task so the client side can't access the data from the browser unless closed the policy so we have to disable the policy on the browser or enable cors from the server \ 
+solutions : \
+1- disable the policy on the browser \ 
+  Open the start menu \
+  Type windows+R or open "Run" \
+  Execute the following command: *chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security* \
 2- enable the cors from server 
 
 
